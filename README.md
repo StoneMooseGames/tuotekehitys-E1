@@ -1,1 +1,1 @@
-Vaasan Ammattikorkeakoulun PTIVIS20 E1 ryhmän projketityö keväälle 2021
+Vaasan Ammattikorkeakoulun PTIVIS20 E1 ryhmän projektityö keväälle 2021

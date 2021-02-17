@@ -16,8 +16,7 @@ public class PlayerMovement : MonoBehaviour {
   }
 
   void Update() {
-    horizontalmove = Input.GetAxisRaw("Horizontal") * speed;
-    if ( Input.GetKey("space") ) is_jumping = true;
+        Controls();
   }
 
   void FixedUpdate() {
@@ -29,4 +28,18 @@ public class PlayerMovement : MonoBehaviour {
       is_jumping = false;
     }
   }
+   private void Controls()
+    {
+        horizontalmove = Input.GetAxisRaw("Horizontal") * speed;
+        if (horizontalmove < 0)
+        {
+            this.GetComponent<SpriteRenderer>().flipX = true;
+        }
+        if (horizontalmove > 0)
+        {
+            this.GetComponent<SpriteRenderer>().flipX = false;
+        }
+
+        if (Input.GetKey("space")) is_jumping = true;
+    }
 }

@@ -5,6 +5,7 @@ public class PlayerMovement : MonoBehaviour {
   public float speed = 2.0f;
   public float jetpackForce = 1.0f;
   public float maxJetpackSpeed = 2.0f;
+  
 
   private float horizontalmove = 0f;
   private Vector3 velocity = Vector3.zero;
@@ -41,5 +42,6 @@ public class PlayerMovement : MonoBehaviour {
         }
 
         if (Input.GetKey("space")) is_jumping = true;
+        
     }
 }

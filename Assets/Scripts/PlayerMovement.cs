@@ -1,12 +1,14 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
+
 
 public class PlayerMovement : MonoBehaviour {
   public float speed = 2.0f;
   public float jetpackForce = 1.0f;
   public float maxJetpackSpeed = 2.0f;
-  
 
+  private int levelNumber = 1;
   private float horizontalmove = 0f;
   private Vector3 velocity = Vector3.zero;
   private Rigidbody2D rb;
@@ -43,5 +45,14 @@ public class PlayerMovement : MonoBehaviour {
 
         if (Input.GetKey("space")) is_jumping = true;
         
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "endlevel")
+        {
+            Debug.Log("Current level:" + levelNumber);
+            levelNumber++;
+            SceneManager.LoadScene("level" + levelNumber);
+        }
     }
 }

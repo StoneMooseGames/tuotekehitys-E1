@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour {
         horizontalmove = Input.GetAxisRaw("Horizontal") * speed;
         if (horizontalmove < 0)
         {
-            this.GetComponent<SpriteRenderer>().flipX = true;
+            this.GetComponent<SpriteRenderer>().flipX = true; 
         }
         if (horizontalmove > 0)
         {
@@ -48,11 +48,12 @@ public class PlayerMovement : MonoBehaviour {
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //Check if playercollider enters another collider(as trigger)
         if (collision.gameObject.tag == "endlevel")
         {
-            Debug.Log("Current level:" + levelNumber);
+            Debug.Log("Current level:" + levelNumber); //print levelnumber to the console
             levelNumber++;
-            SceneManager.LoadScene("level" + levelNumber);
+            SceneManager.LoadScene("level" + levelNumber); //Load next scene
         }
     }
 }

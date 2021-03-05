@@ -506,12 +506,12 @@ PrefabInstance:
     - target: {fileID: 5452457947041507718, guid: afbf894a642724448a80627c29cde42b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.58
+      value: 5.4
       objectReference: {fileID: 0}
     - target: {fileID: 5452457947041507718, guid: afbf894a642724448a80627c29cde42b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.25
+      value: 5.58
       objectReference: {fileID: 0}
     - target: {fileID: 5452457947041507718, guid: afbf894a642724448a80627c29cde42b,
         type: 3}
@@ -591,12 +591,12 @@ PrefabInstance:
     - target: {fileID: 5452457947041507718, guid: afbf894a642724448a80627c29cde42b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.19
+      value: 5.4
       objectReference: {fileID: 0}
     - target: {fileID: 5452457947041507718, guid: afbf894a642724448a80627c29cde42b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -19.94
+      value: -20.15
       objectReference: {fileID: 0}
     - target: {fileID: 5452457947041507718, guid: afbf894a642724448a80627c29cde42b,
         type: 3}
@@ -17246,7 +17246,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1423980030
@@ -17621,7 +17621,7 @@ PrefabInstance:
     - target: {fileID: 5452457947041507718, guid: afbf894a642724448a80627c29cde42b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.57
+      value: 5.4
       objectReference: {fileID: 0}
     - target: {fileID: 5452457947041507718, guid: afbf894a642724448a80627c29cde42b,
         type: 3}

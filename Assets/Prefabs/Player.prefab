@@ -162,6 +162,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 4762441809073853793, guid: d02f36009589e3a4d84b9ddc49eef425,
     type: 3}
+  bulletSpeed: 15
+  dynamites: 6
 --- !u!95 &90827263892703936
 Animator:
   serializedVersion: 3

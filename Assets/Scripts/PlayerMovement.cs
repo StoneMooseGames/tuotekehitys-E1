@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using System;
 
 
 public class PlayerMovement : MonoBehaviour {
@@ -8,7 +9,7 @@ public class PlayerMovement : MonoBehaviour {
   public float jetpackForce = 1.0f;
   public float maxJetpackSpeed = 2.0f;
 
-  private int levelNumber = 1;
+  private int levelNumber;
   private float horizontalmove = 0f;
   private Vector3 velocity = Vector3.zero;
   private Rigidbody2D rb;
@@ -51,9 +52,30 @@ public class PlayerMovement : MonoBehaviour {
         //Check if playercollider enters another collider(as trigger)
         if (collision.gameObject.tag == "endlevel")
         {
-            Debug.Log("Current level:" + levelNumber); //print levelnumber to the console
-            levelNumber++;
-            SceneManager.LoadScene("level" + levelNumber); //Load next scene
+            
+            
+            if (SceneManager.GetActiveScene().name.Length <= 6) //Check how long is name name of the scene
+            {
+                double tempNumber = Char.GetNumericValue(SceneManager.GetActiveScene().name[5]); //Get the 6th character from the scene.name
+                levelNumber = (int)(tempNumber); //turn it into integer
+                levelNumber++; //add one to levelnumber
+                SceneManager.LoadScene("level" + levelNumber); //Load next scene
+                if(levelNumber == 9) // if level is 9 it needs to be checked so that naming can turn to double digits
+                {
+                    SceneManager.LoadScene("level" + 10); //Load next scene
+                }
+                
+            }
+            if (SceneManager.GetActiveScene().name.Length == 7)
+            {
+                int tempNumber1 = (int)(Char.GetNumericValue(SceneManager.GetActiveScene().name[5])); //same as before, just shortened
+                int tempNumber2 = (int)(Char.GetNumericValue(SceneManager.GetActiveScene().name[6]));
+                tempNumber2++;
+                SceneManager.LoadScene("level" + tempNumber1 + tempNumber2); //Load next scene
+            }
+        Debug.Log("Current level:" + SceneManager.GetActiveScene().name); //print levelnumber to the console   
+
+
         }
     }
 }

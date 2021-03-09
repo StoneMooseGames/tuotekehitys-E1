@@ -6,6 +6,8 @@ TagManager:
   tags:
   - cameratrigger
   - endlevel
+  - HealthUI
+  - PlayerUI
   layers:
   - Default
   - TransparentFX

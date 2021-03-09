@@ -7,7 +7,6 @@ public class PlayerMovement : MonoBehaviour
 {
   public float speed = 2.0f;
   public float jetpackForce = 1.0f;
-  public float maxJetpackSpeed = 2.0f;
 
   private int levelNumber;
   private float horizontalmove = 0f;

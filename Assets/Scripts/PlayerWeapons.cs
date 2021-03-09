@@ -11,8 +11,6 @@ public class PlayerWeapons : MonoBehaviour
     public float bulletSpeed = 25.0f;
     // public float fireRate = 1; // TODO
     public int dynamites = 6; // how many the player has
-    public float dynamiteFuse = 2f; // seconds
-    public float dynamiteExplosionRadius = 1.5f;
 
     void Start() {}
     void Update() { Controls(); }
@@ -35,8 +33,6 @@ public class PlayerWeapons : MonoBehaviour
           playerLocation = new Vector3(this.transform.position.x + GetPlayerDirection() * 0.5f, this.transform.position.y, 0);
           GameObject dynamite = Instantiate(dynamitePrefab, playerLocation, Quaternion.identity);
           // "send" information to DynamiteLogic script for logic handling
-          dynamite.GetComponent<DynamiteLogic>().fuseTime = dynamiteFuse;
-          dynamite.GetComponent<DynamiteLogic>().explosionRadius = dynamiteExplosionRadius;
 
           dynamites--;
         }

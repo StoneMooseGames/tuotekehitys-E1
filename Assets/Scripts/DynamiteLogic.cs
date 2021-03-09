@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class DynamiteLogic : MonoBehaviour
 {
-    // these will be set in PlayerWeapons when a dynamite object is created
     public float fuseTime;
     public float explosionRadius;
+    AudioSource explosionSound;
+    SpriteRenderer spriteRenderer;
 
-    void Start() {}
+    void Start()
+    {
+      explosionSound = GetComponent<AudioSource>();
+      spriteRenderer = GetComponent<SpriteRenderer>();
+    }
 
     void Update()
     {
@@ -18,17 +23,21 @@ public class DynamiteLogic : MonoBehaviour
 
     void Explode()
     {
-      Collider2D[] hitColliders = Physics2D.OverlapCircleAll( this.gameObject.transform.position, explosionRadius );
-
-      foreach ( var hitCollider in hitColliders )
+      if ( !explosionSound.isPlaying )
       {
-        if ( hitCollider.name == "wall" ) Destroy( hitCollider.gameObject );
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll( this.gameObject.transform.position, explosionRadius );
+        foreach ( var hitCollider in hitColliders )
+        {
+          if ( hitCollider.name == "wall" ) Destroy( hitCollider.gameObject );
+          // TODO: player damage
+          else if ( hitCollider.name == "Player" ) print( "TODO: oof you took X damage!" );
+        }
 
-        // TODO: player damage
-        else if ( hitCollider.name == "Player" )
-          print( "TODO: oof you took X damage!" );
+        explosionSound.Play(); // play audio
+        // because Destroy is delayed so that the audio is played correctly,
+        // the sprite will be visible too long. Hence we hide the object and destroy it later
+        spriteRenderer.enabled = false;
+        Destroy( this.gameObject, explosionSound.clip.length );
       }
-
-      Destroy( this.gameObject );
     }
 }

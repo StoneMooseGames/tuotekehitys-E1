@@ -8,7 +8,7 @@ public class PlayerWeapons : MonoBehaviour
     public GameObject dynamitePrefab;
     Vector3 playerLocation;
 
-    public float bulletSpeed = 15.0f;
+    public float bulletSpeed = 25.0f;
     // public float fireRate = 1; // TODO
     public int dynamites = 6; // how many the player has
     public float dynamiteFuse = 2f; // seconds
@@ -21,10 +21,10 @@ public class PlayerWeapons : MonoBehaviour
     {
       if ( Input.GetMouseButtonDown(0) ) // left click for now
       {
-        playerLocation = new Vector3(this.transform.position.x, this.transform.position.y,0);
+        playerLocation = this.transform.position;
         GameObject bullet = Instantiate(bulletPrefab, playerLocation, Quaternion.identity);
         // -1 == left, 1 == right
-        float direction = this.GetComponent<SpriteRenderer>().flipX ? -1 : 1;
+        float direction = GetPlayerDirection();
         bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(bulletSpeed * direction, 0f);
       }
 
@@ -32,11 +32,11 @@ public class PlayerWeapons : MonoBehaviour
       {
         if ( dynamites > 0 )
         {
-          playerLocation = new Vector3(this.transform.position.x, this.transform.position.y,0);
+          playerLocation = new Vector3(this.transform.position.x + GetPlayerDirection() * 0.5f, this.transform.position.y, 0);
           GameObject dynamite = Instantiate(dynamitePrefab, playerLocation, Quaternion.identity);
-          // "send" information to dynamiteLogic script for logic handling
-          dynamite.GetComponent<dynamiteLogic>().fuseTime = dynamiteFuse;
-          dynamite.GetComponent<dynamiteLogic>().explosionRadius = dynamiteExplosionRadius;
+          // "send" information to DynamiteLogic script for logic handling
+          dynamite.GetComponent<DynamiteLogic>().fuseTime = dynamiteFuse;
+          dynamite.GetComponent<DynamiteLogic>().explosionRadius = dynamiteExplosionRadius;
 
           dynamites--;
         }
@@ -48,5 +48,10 @@ public class PlayerWeapons : MonoBehaviour
           print("TODO: you got no dynamites left!");
         }
       }
+    }
+
+    float GetPlayerDirection() {
+      // -1 == left, 1 == right
+      return this.GetComponent<SpriteRenderer>().flipX ? -1 : 1;
     }
 }

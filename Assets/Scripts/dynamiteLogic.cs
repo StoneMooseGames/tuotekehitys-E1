@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class dynamiteLogic : MonoBehaviour
+public class DynamiteLogic : MonoBehaviour
 {
     // these will be set in PlayerWeapons when a dynamite object is created
     public float fuseTime;
@@ -22,8 +22,7 @@ public class dynamiteLogic : MonoBehaviour
 
       foreach ( var hitCollider in hitColliders )
       {
-        if ( hitCollider.name == "wall" )
-          Destroy( hitCollider.gameObject );
+        if ( hitCollider.name == "wall" ) Destroy( hitCollider.gameObject );
 
         // TODO: player damage
         else if ( hitCollider.name == "Player" )

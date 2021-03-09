@@ -24,7 +24,7 @@ public class PlayerWeapons : MonoBehaviour
         playerLocation = this.transform.position;
         GameObject bullet = Instantiate(bulletPrefab, playerLocation, Quaternion.identity);
         // -1 == left, 1 == right
-        float direction = this.GetComponent<SpriteRenderer>().flipX ? -1 : 1;
+        float direction = GetPlayerDirection();
         bullet.GetComponent<Rigidbody2D>().velocity = new Vector2(bulletSpeed * direction, 0f);
       }
 
@@ -32,7 +32,7 @@ public class PlayerWeapons : MonoBehaviour
       {
         if ( dynamites > 0 )
         {
-          playerLocation = this.transform.position;
+          playerLocation = new Vector3(this.transform.position.x + GetPlayerDirection() * 0.5f, this.transform.position.y, 0);
           GameObject dynamite = Instantiate(dynamitePrefab, playerLocation, Quaternion.identity);
           // "send" information to DynamiteLogic script for logic handling
           dynamite.GetComponent<DynamiteLogic>().fuseTime = dynamiteFuse;
@@ -48,5 +48,10 @@ public class PlayerWeapons : MonoBehaviour
           print("TODO: you got no dynamites left!");
         }
       }
+    }
+
+    float GetPlayerDirection() {
+      // -1 == left, 1 == right
+      return this.GetComponent<SpriteRenderer>().flipX ? -1 : 1;
     }
 }

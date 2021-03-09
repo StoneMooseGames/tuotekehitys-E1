@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletLogic : MonoBehaviour
 {
-    float lifeTime = 3.0f;
+    float lifeTime = 1.5f;
     void Start(){}
     void Update()
     {

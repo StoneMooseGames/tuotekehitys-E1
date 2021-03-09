@@ -8,7 +8,7 @@ public class PlayerWeapons : MonoBehaviour
     public GameObject dynamitePrefab;
     Vector3 playerLocation;
 
-    public float bulletSpeed = 15.0f;
+    public float bulletSpeed = 25.0f;
     // public float fireRate = 1; // TODO
     public int dynamites = 6; // how many the player has
     public float dynamiteFuse = 2f; // seconds

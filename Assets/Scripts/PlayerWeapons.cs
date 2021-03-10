@@ -12,7 +12,14 @@ public class PlayerWeapons : MonoBehaviour
     // public float fireRate = 1; // TODO
     public int dynamites = 6; // how many the player has
 
-    void Start() {}
+    PlayerUI playerUI;
+
+    void Start()
+    {
+      playerUI = GameObject.FindGameObjectWithTag("PlayerUI").GetComponent<PlayerUI>();
+      playerUI.SetDynamite(dynamites);
+    }
+
     void Update() { Controls(); }
 
     private void Controls()
@@ -35,6 +42,7 @@ public class PlayerWeapons : MonoBehaviour
           // "send" information to DynamiteLogic script for logic handling
 
           dynamites--;
+          playerUI.SetDynamite(dynamites);
         }
 
         // TODO: if player has no dynamites left,

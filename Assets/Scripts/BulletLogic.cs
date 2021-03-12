@@ -18,5 +18,6 @@ public class BulletLogic : MonoBehaviour
     {
       // destroy the bullet if it hits a wall
       if( other.name == "Tilemap" ) Destroy(this.gameObject);
+      else if( other.tag == "spider" ) { Destroy(other.gameObject); Destroy(this.gameObject); } // destroy both the enemy and the bullet
     }
 }

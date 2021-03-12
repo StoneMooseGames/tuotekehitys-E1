@@ -13,7 +13,7 @@ public class SpiderNPCBehavior : MonoBehaviour
         this.gameObject.AddComponent<Rigidbody2D>();
         this.GetComponent<Rigidbody2D>().simulated = false;
         player = GameObject.Find("Player");
-        
+        this.gameObject.tag = "spider";
     }
 
     // Update is called once per frame
@@ -26,11 +26,11 @@ public class SpiderNPCBehavior : MonoBehaviour
         if (distanceToPlayer.x < triggerDistance.x)
         {
             this.GetComponent<Rigidbody2D>().simulated = true;
-            
+
         }
     }
-    
-    
 
-    
+
+
+
 }

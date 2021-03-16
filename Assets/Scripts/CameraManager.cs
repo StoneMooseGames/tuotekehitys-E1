@@ -9,6 +9,7 @@ public class CameraManager : MonoBehaviour
 
   void Start()
   {
+        playerCamera = Camera.main;
     // at start disable Spriterendering for this, because the sprite is there
     // only to mark the spot for the camera.
     this.gameObject.GetComponent<SpriteRenderer>().enabled = false;

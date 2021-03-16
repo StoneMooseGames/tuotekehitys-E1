@@ -9,8 +9,12 @@ public class Menu : MonoBehaviour
   {
     SceneManager.LoadScene("level1"); 
   }
-public void PressExit()
+    public void PressExit()
   {
     Application.Quit();
   }
+    public void StartTutorial()
+    {
+        SceneManager.LoadScene("tutoriallevel");
+    }
 }

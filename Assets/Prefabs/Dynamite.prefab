@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53693233f77f4f14ebf0b1c1b4a6b43c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fuseTime: 2
+  fuseTime: 2.5
   explosionRadius: 1.5
 --- !u!50 &2769574147928964236
 Rigidbody2D:

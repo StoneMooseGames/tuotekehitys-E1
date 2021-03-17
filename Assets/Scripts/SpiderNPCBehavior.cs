@@ -21,7 +21,7 @@ public class SpiderNPCBehavior : MonoBehaviour
     {
         distanceToPlayer = this.transform.position - player.transform.position;
         //this can be checked to see the distance as a 2d vector
-        Debug.Log(distanceToPlayer);
+        //Debug.Log(distanceToPlayer);
         //Check distance in x-axis
         if (distanceToPlayer.x < triggerDistance.x)
         {

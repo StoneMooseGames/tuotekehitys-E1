@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
   public float speed = 2.0f;
   public float jetpackForce = 1.0f;
+  public Animator animator;
 
   private int levelNumber;
   private float horizontalmove = 0f;
@@ -15,7 +16,10 @@ public class PlayerMovement : MonoBehaviour
   private bool is_jumping;
 
   void Start() { rb = GetComponent<Rigidbody2D>(); }
-  void Update() { Controls(); }
+  void Update() {
+        Controls();
+        animator.SetFloat("Speed", Mathf.Abs(horizontalmove));
+    }
 
   void FixedUpdate() {
     Vector3 targetVelocity = new Vector2(horizontalmove * 10f * Time.fixedDeltaTime, rb.velocity.y);

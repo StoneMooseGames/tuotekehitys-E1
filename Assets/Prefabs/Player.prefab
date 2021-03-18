@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 8361454894022775507, guid: b88a4b68b5c561943955792cf3fdcefa,
+  m_Sprite: {fileID: -7688686722689144068, guid: 787ea60cb85c39b4cbbcf8d092bef8aa,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -123,7 +123,7 @@ BoxCollider2D:
   m_UsedByComposite: 1
   m_Offset: {x: 0, y: -0.02}
   m_SpriteTilingProperty:
-    border: {x: 0.01, y: 0, z: 0.01, w: 0.01}
+    border: {x: 0, y: 0, z: 0.01, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.19, y: 0.32}
     newSize: {x: 0.37, y: 0.6}
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   jetpackForce: 50
-  maxJetpackSpeed: 2
+  animator: {fileID: 90827263892703936}
 --- !u!114 &4216473993811342517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,8 +167,6 @@ MonoBehaviour:
     type: 3}
   bulletSpeed: 15
   dynamites: 6
-  dynamiteFuse: 2
-  dynamiteExplosionRadius: 1.5
 --- !u!95 &90827263892703936
 Animator:
   serializedVersion: 3

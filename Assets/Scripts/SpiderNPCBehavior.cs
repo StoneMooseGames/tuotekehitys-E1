@@ -10,7 +10,7 @@ public class SpiderNPCBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.gameObject.AddComponent<Rigidbody2D>();
+        //this.gameObject.AddComponent<Rigidbody2D>();
         this.GetComponent<Rigidbody2D>().simulated = false;
         player = GameObject.Find("Player");
         this.gameObject.tag = "spider";

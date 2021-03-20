@@ -28,7 +28,7 @@ public class PlayerWeapons : MonoBehaviour
       {
         playerLocation = this.transform.position;
         Vector2 target = Camera.main.ScreenToWorldPoint( new Vector2(Input.mousePosition.x, Input.mousePosition.y) );
-        GameObject bullet = Instantiate(bulletPrefab, playerLocation, Quaternion.identity);
+        GameObject bullet = Instantiate(bulletPrefab, playerLocation + new Vector2(GetPlayerDirection()*0.5f,0), Quaternion.identity);
 
         Vector2 direction = target - playerLocation;
         direction.Normalize();

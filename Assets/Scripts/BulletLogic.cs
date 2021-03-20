@@ -13,11 +13,23 @@ public class BulletLogic : MonoBehaviour
       lifeTime -= Time.deltaTime;
       if ( lifeTime <= 0 ) Destroy( this.gameObject );
     }
-
-    private void OnTriggerEnter2D( Collider2D other )
+        
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-      // destroy the bullet if it hits a wall
-      if( other.name == "Tilemap" ) Destroy(this.gameObject);
-      else if( other.tag == "spider" ) { Destroy(other.gameObject); Destroy(this.gameObject); } // destroy both the enemy and the bullet
+        //check whether spider is hit
+        if (collision.gameObject.tag == "spider")
+        {
+            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * 50, ForceMode2D.Impulse);
+            Destroy(this.gameObject);
+        }
+
+        //Destroy bullet if it hits any collider
+        Destroy(this.gameObject);
     }
+
+
+
+
+
+
 }

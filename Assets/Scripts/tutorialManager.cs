@@ -10,13 +10,13 @@ public class tutorialManager : MonoBehaviour
     public GameObject[] tutorials;
     int tutorialStage = 0;
     GameObject player;
-    GameObject endObject;
+    public GameObject endObject;
     
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
-        endObject = GameObject.Find("EndLevel");
+        
 
         for (int i = 0; i < tutorials.Length; i++)
         {

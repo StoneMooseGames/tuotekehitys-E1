@@ -28,7 +28,7 @@ public class DynamiteLogic : MonoBehaviour
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll( this.gameObject.transform.position, explosionRadius );
         foreach ( var hitCollider in hitColliders )
         {
-          if ( hitCollider.name == "wall" ) Destroy( hitCollider.gameObject );
+          if ( hitCollider.tag == "Destroyable" ) Destroy( hitCollider.gameObject );
           // TODO: player damage
           else if ( hitCollider.name == "Player" ) print( "TODO: oof you took X damage!" );
         }

@@ -9,6 +9,7 @@ TagManager:
   - HealthUI
   - PlayerUI
   - spider
+  - Destroyable
   layers:
   - Default
   - TransparentFX

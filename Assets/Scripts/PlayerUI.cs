@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerUI : MonoBehaviour
 {
@@ -21,4 +22,10 @@ public class PlayerUI : MonoBehaviour
   {
     dynamite.text = value.ToString();
   }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown("escape")) SceneManager.LoadScene("Menu");
+       
+    }
 }

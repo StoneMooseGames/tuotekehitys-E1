@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Spider : MonoBehaviour
 {
@@ -9,13 +10,15 @@ public class Spider : MonoBehaviour
     private Transform target;
     float deathTimer = 3.0f;
     public GameObject deathParticles;
+    public Canvas healthBar;
+    RectTransform healthBarLocation;
 
 
     void Start()
     {
         deathParticles.SetActive(false);
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
-
+        healthBarLocation = healthBar.GetComponent<RectTransform>();
     }
 
 
@@ -24,10 +27,15 @@ public class Spider : MonoBehaviour
         if (health <= 0)
         {
             DeathCycle();
-           
         }
-        
-        else transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+        else
+        {
+            transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+            healthBarLocation.position = transform.position;
+            healthBar.GetComponentInChildren<Slider>().value = health;
+             
+        }
+
     }
 
     public void DeathCycle()
@@ -38,6 +46,7 @@ public class Spider : MonoBehaviour
         {
             deathTimer -= Time.deltaTime;
             deathParticles.SetActive(true);
+            healthBar.gameObject.SetActive(false);
         }
         else Destroy(gameObject);
        

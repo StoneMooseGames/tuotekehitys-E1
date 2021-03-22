@@ -5,6 +5,7 @@ using UnityEngine;
 public class Spider : MonoBehaviour
 {
     public float speed;
+    public float health;
     private Transform target;
 
 
@@ -18,6 +19,8 @@ public class Spider : MonoBehaviour
 
     void Update()
     {
+        if( health <= 0 ) Destroy(gameObject);
+        
         transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
     }
 }

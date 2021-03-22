@@ -8,8 +8,8 @@ TagManager:
   - endlevel
   - HealthUI
   - PlayerUI
-  - spider
   - Destroyable
+  - enemy
   layers:
   - Default
   - TransparentFX

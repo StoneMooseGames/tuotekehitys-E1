@@ -11,21 +11,22 @@ public class SpiderNPCBehavior : MonoBehaviour
     void Start()
     {
         //this.gameObject.AddComponent<Rigidbody2D>();
-        this.GetComponent<Rigidbody2D>().simulated = false;
+        GetComponent<Rigidbody2D>().simulated = false;
         player = GameObject.Find("Player");
-        this.gameObject.tag = "spider";
+        gameObject.tag = "enemy";
+        gameObject.name = "Spider";
     }
 
     // Update is called once per frame
     void Update()
     {
-        distanceToPlayer = this.transform.position - player.transform.position;
+        distanceToPlayer = transform.position - player.transform.position;
         //this can be checked to see the distance as a 2d vector
         //Debug.Log(distanceToPlayer);
         //Check distance in x-axis
         if (distanceToPlayer.x < triggerDistance.x)
         {
-            this.GetComponent<Rigidbody2D>().simulated = true;
+            GetComponent<Rigidbody2D>().simulated = true;
 
         }
     }

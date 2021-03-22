@@ -9,6 +9,7 @@ public class PlayerWeapons : MonoBehaviour
     Vector2 playerLocation;
 
     public float bulletSpeed = 25.0f;
+    public float bulletDamage;
     // public float fireRate = 1; // TODO
     public int dynamites = 6; // how many the player has
 
@@ -30,7 +31,10 @@ public class PlayerWeapons : MonoBehaviour
         Vector2 target = Camera.main.ScreenToWorldPoint( new Vector2(Input.mousePosition.x, Input.mousePosition.y) );
         // create a bullet by cloning the prefab
         GameObject bullet = Instantiate(bulletPrefab, playerLocation + new Vector2(GetPlayerDirection()*0.5f,0), Quaternion.identity);
-        Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), GetComponent<Collider2D>()); // prevent bullet from colliding with the player
+        // prevent bullet from colliding with the player
+        Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        // tell the bullet how much damage it's supposed to deal
+        bullet.GetComponent<BulletLogic>().setBulletDamage(bulletDamage);
 
         Vector2 direction = target - playerLocation;
         direction.Normalize();

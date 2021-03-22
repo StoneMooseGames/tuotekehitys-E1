@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraManager : MonoBehaviour
 {
   public Camera playerCamera;
-  public Vector3 cameraLocationOffset = new Vector3(0, 0, 0);
+  Vector3 cameraLocationOffset = new Vector3(0, 0, -15);
 
   void Start()
   {
@@ -23,7 +23,7 @@ public class CameraManager : MonoBehaviour
     // where the collider is.
     if ( other.name == "Player" )
     {
-      playerCamera.transform.position = this.gameObject.transform.position;
+      playerCamera.transform.position = this.gameObject.transform.position + cameraLocationOffset;
     }
   }
 }

@@ -7,11 +7,13 @@ public class Spider : MonoBehaviour
     public float speed;
     public float health;
     private Transform target;
+    float deathTimer = 6.0f;
+    public GameObject deathParticles;
 
 
     void Start()
     {
-
+        deathParticles.SetActive(false);
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 
     }
@@ -19,8 +21,34 @@ public class Spider : MonoBehaviour
 
     void Update()
     {
-        if( health <= 0 ) Destroy(gameObject);
+        if (health <= 0)
+        {
+            DeathCycle();
+           
+        }
         
-        transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+        else transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
     }
+
+    public void DeathCycle()
+    {
+        
+        this.gameObject.transform.rotation = Quaternion.Euler(new Vector3 (180, 0, 0));
+        if (deathTimer > 0)
+        {
+            deathTimer -= Time.deltaTime;
+            deathParticles.SetActive(true);
+        }
+        else if(deathTimer < 3)
+        {
+
+            Destroy(gameObject);
+
+        }
+        
+
+
+    }
+
+
 }

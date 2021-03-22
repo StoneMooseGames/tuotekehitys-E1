@@ -7,7 +7,7 @@ public class Spider : MonoBehaviour
     public float speed;
     public float health;
     private Transform target;
-    float deathTimer = 6.0f;
+    float deathTimer = 3.0f;
     public GameObject deathParticles;
 
 
@@ -39,13 +39,8 @@ public class Spider : MonoBehaviour
             deathTimer -= Time.deltaTime;
             deathParticles.SetActive(true);
         }
-        else if(deathTimer < 3)
-        {
-
-            Destroy(gameObject);
-
-        }
-        
+        else Destroy(gameObject);
+       
 
 
     }

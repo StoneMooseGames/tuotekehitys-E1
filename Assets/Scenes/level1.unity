@@ -7704,6 +7704,16 @@ PrefabInstance:
       propertyPath: m_UsedByComposite
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 90827263892703941, guid: 56c7e5b5a754b994daac93f39e7ccb82,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 90827263892703941, guid: 56c7e5b5a754b994daac93f39e7ccb82,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 116986275
+      objectReference: {fileID: 0}
     - target: {fileID: 90827263892703942, guid: 56c7e5b5a754b994daac93f39e7ccb82,
         type: 3}
       propertyPath: m_RootOrder

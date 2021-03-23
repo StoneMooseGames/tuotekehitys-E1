@@ -7,6 +7,7 @@ public class SpiderNPCBehavior : MonoBehaviour
     Vector2 distanceToPlayer;
     GameObject player;
     Vector2 triggerDistance = new Vector2(6, 3);
+    public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,9 +30,10 @@ public class SpiderNPCBehavior : MonoBehaviour
             GetComponent<Rigidbody2D>().simulated = true;
 
         }
+        
     }
 
-
+    
 
 
 }

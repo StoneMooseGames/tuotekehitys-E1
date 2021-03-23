@@ -8,6 +8,7 @@ public class DynamiteLogic : MonoBehaviour
     public float explosionRadius;
     AudioSource explosionSound;
     SpriteRenderer spriteRenderer;
+    
 
     void Start()
     {

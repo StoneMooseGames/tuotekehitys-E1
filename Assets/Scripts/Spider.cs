@@ -49,6 +49,7 @@ public class Spider : MonoBehaviour
             healthBar.gameObject.SetActive(false);
         }
         else Destroy(gameObject);
+
        
 
 

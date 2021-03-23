@@ -411,7 +411,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6772462024213698051}
   serializedVersion: 6
-  lengthInSec: 1
+  lengthInSec: 4
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -593,7 +593,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0.4056604, g: 0.001913497, b: 0.001913497, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -971,7 +971,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 100
+    maxNumParticles: 10000
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -1030,7 +1030,7 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 0
+    type: 10
     angle: 25
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
@@ -5227,6 +5227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 419d786f4dcc5a94b9cadf46acc4d760, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
 --- !u!95 &2898241012839482879
 Animator:
   serializedVersion: 3
@@ -5261,7 +5262,6 @@ MonoBehaviour:
   speed: 3
   health: 60
   deathParticles: {fileID: 6772462024213698051}
-  damageSlider: {fileID: 317782090806233559}
   healthBar: {fileID: 3928278405586580547}
 --- !u!50 &3830923671922741643
 Rigidbody2D:

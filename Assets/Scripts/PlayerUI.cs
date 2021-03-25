@@ -24,15 +24,15 @@ public class PlayerUI : MonoBehaviour
   }
   public void SetPoints(int value)
     {
-        Debug.Log(value);
-        int.TryParse(points.text, out int temp);
-        temp = temp + value;
-        points.text = temp.ToString();
+        
+        int.TryParse(points.text, out int temp); //points text is a string, so parse it to int temporarily
+        temp = temp + value; //add incoming points to temp
+        points.text = temp.ToString(); //turn int value back to string and change the text string to correspond right amount of points
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown("escape")) SceneManager.LoadScene("Menu");
+        if (Input.GetKeyDown("escape")) SceneManager.LoadScene("Menu"); //Escape key loads Menu
        
     }
     

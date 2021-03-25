@@ -13,9 +13,10 @@ public class SoundManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        audioPlayer = this.GetComponent<AudioSource>();
-        audioPlayer.clip = music[0];
-        audioPlayer.Play(0);
+        audioPlayer = this.GetComponent<AudioSource>(); //get audioplayer component from this gameobject
+        audioPlayer.clip = music[0]; //select first music audio file from music list
+        audioPlayer.Play(0);  // start play
+        audioPlayer.loop = true; //make sure it's looping
     }
 
     // Update is called once per frame

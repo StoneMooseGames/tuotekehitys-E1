@@ -5263,6 +5263,7 @@ MonoBehaviour:
   health: 60
   deathParticles: {fileID: 6772462024213698051}
   healthBar: {fileID: 3928278405586580547}
+  points: 50
 --- !u!50 &3830923671922741643
 Rigidbody2D:
   serializedVersion: 4

@@ -12,6 +12,7 @@ public class Spider : MonoBehaviour
     public GameObject deathParticles;
     public Canvas healthBar;
     RectTransform healthBarLocation;
+    public int points;
 
 
     void Start()
@@ -19,13 +20,15 @@ public class Spider : MonoBehaviour
         deathParticles.SetActive(false);
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         healthBarLocation = healthBar.GetComponent<RectTransform>();
+        
     }
-
+    
 
     void Update()
     {
         if (health <= 0)
         {
+            
             DeathCycle();
         }
         else
@@ -47,13 +50,18 @@ public class Spider : MonoBehaviour
             deathTimer -= Time.deltaTime;
             deathParticles.SetActive(true);
             healthBar.gameObject.SetActive(false);
+
         }
-        else Destroy(gameObject);
+        else
+        {
+            Destroy(gameObject);
+            GameObject.FindGameObjectWithTag("PlayerUI").GetComponent<PlayerUI>().SetPoints(points);
+        }
 
-       
 
 
-    }
+
+        }
 
 
 }

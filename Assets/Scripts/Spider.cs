@@ -50,7 +50,7 @@ public class Spider : MonoBehaviour
         {
             deathTimer -= Time.deltaTime; //make timer go down
             deathParticles.SetActive(true); //start death particle cycle
-            healthBar.gameObject.SetActive(false); //remove heawlthbar on death
+            healthBar.gameObject.SetActive(false); //remove healthbar on death
 
         }
         else
@@ -72,8 +72,12 @@ public class Spider : MonoBehaviour
            
             healthBarLocation.position = transform.position; //make healthbar follow enemy
             healthBar.GetComponentInChildren<Slider>().value = health; //adjust slider by current healthvalue
-            
-            if(health < Maxhealth && isAlive) transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime); //if npc takes damage, starts following player
+
+            if (health < Maxhealth && isAlive)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime); //if npc takes damage, starts following player
+                animator.SetBool("isAwake", true);
+            }
             
            
         }

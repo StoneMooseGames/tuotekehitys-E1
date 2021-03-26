@@ -39,6 +39,7 @@ public class Spider : MonoBehaviour
     {
         CheckHealth();
         CheckDistanceToPlayer();
+    
     }
 
     public void DeathCycle() 
@@ -71,7 +72,10 @@ public class Spider : MonoBehaviour
            
             healthBarLocation.position = transform.position; //make healthbar follow enemy
             healthBar.GetComponentInChildren<Slider>().value = health; //adjust slider by current healthvalue
-            if(health < Maxhealth && isAlive) transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+            
+            if(health < Maxhealth && isAlive) transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime); //if npc takes damage, starts following player
+            
+           
         }
     }
 
@@ -84,7 +88,7 @@ public class Spider : MonoBehaviour
         {
             transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
             GetComponent<Rigidbody2D>().simulated = true;
-
+            animator.SetBool("isAwake", true);
         }
     }
 

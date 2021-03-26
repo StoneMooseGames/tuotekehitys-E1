@@ -4,20 +4,35 @@ using UnityEngine;
 
 public class BulletLogic : MonoBehaviour
 {
-    float lifeTime = 1.5f;
+    float bulletDamage;
     void Start(){}
-    void Update()
+    void Update(){}
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-      // FIX: bullets sometimes glitch through the walls
-      // this is a temporary solution to destroy glitched bullets
-      lifeTime -= Time.deltaTime;
-      if ( lifeTime <= 0 ) Destroy( this.gameObject );
+
+      //check whether an enemy is hit
+      if (collision.gameObject.tag == "enemy")
+      {
+        collision.gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * 50, ForceMode2D.Impulse);
+
+        // get the script that has the health variable
+        collision.gameObject.GetComponent<Spider>().health -= bulletDamage;
+
+        Destroy(gameObject);
+      }
+      // Destroy bullet if it hits any collider
+      Destroy(gameObject);
     }
 
-    private void OnTriggerEnter2D( Collider2D other )
+    public void setBulletDamage(float damage)
     {
-      // destroy the bullet if it hits a wall
-      if( other.name == "Tilemap" ) Destroy(this.gameObject);
-      else if( other.tag == "spider" ) { Destroy(other.gameObject); Destroy(this.gameObject); } // destroy both the enemy and the bullet
+      bulletDamage = damage;
     }
+
+
+
+
+
+
 }

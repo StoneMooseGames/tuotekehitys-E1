@@ -5,6 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
+    private void Start()
+    {
+        Destroy(GameObject.Find("UI"));
+        Destroy(GameObject.Find("Sound Manager"));
+    }
     public void PressStart()
   {
     SceneManager.LoadScene("level1"); 

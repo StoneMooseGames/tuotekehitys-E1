@@ -70,5 +70,10 @@ public class PlayerMovement : MonoBehaviour
       }
       Debug.Log("Current level:" + SceneManager.GetActiveScene().name); //print levelnumber to the console
     }
+
+    if(collision.gameObject.tag == "tempendlevel")
+        {
+            SceneManager.LoadScene("Menu");
+        }
   }
 }

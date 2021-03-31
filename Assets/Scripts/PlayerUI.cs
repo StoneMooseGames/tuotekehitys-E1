@@ -11,11 +11,13 @@ public class PlayerUI : MonoBehaviour
     public TextMeshProUGUI time;
     public TextMeshProUGUI dynamite;
     public TextMeshProUGUI points;
+    public Slider healthSlider;
 
 
     public void SetHealthFill(float value)
   {
-    healthBar.fillAmount = value;
+        //healthBar.fillAmount = value;
+        healthSlider.value = value;
   }
 
   public void SetDynamite(int value)

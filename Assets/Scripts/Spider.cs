@@ -19,6 +19,7 @@ public class Spider : MonoBehaviour
     public Vector2 triggerDistance = new Vector2(5, 2);
     public Animator animator;
     bool isAlive = true;
+    int damage = 20;
 
 
     void Start()
@@ -94,6 +95,11 @@ public class Spider : MonoBehaviour
             GetComponent<Rigidbody2D>().simulated = true;
             animator.SetBool("isAwake", true);
         }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        
+        if(collision.gameObject.tag =="Player") collision.gameObject.GetComponent<PlayerMovement>().TakeDamage(damage); 
     }
 
 

@@ -7,7 +7,9 @@ public class PlayerMovement : MonoBehaviour
 {
   public float speed = 2.0f;
   public float jetpackForce = 1.0f;
+    public int health = 200;
   public Animator animator;
+  private GameObject playerUI;
 
   private int levelNumber;
   private float horizontalmove = 0f;
@@ -15,8 +17,14 @@ public class PlayerMovement : MonoBehaviour
   private Rigidbody2D rb;
   private bool is_jumping;
 
-  void Start() { rb = GetComponent<Rigidbody2D>(); }
-  void Update() {
+  void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        playerUI = GameObject.FindGameObjectWithTag("PlayerUI");
+    }
+
+  void Update()
+    {
         Controls();
         animator.SetFloat("Speed", Mathf.Abs(horizontalmove));
     }
@@ -76,4 +84,16 @@ public class PlayerMovement : MonoBehaviour
             SceneManager.LoadScene("Menu");
         }
   }
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        Debug.Log(health);
+        playerUI.GetComponent<PlayerUI>().SetHealthFill(health);
+        if (health <= 0) startPlayerDeathSequence();
+    }
+    private void startPlayerDeathSequence()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
 }

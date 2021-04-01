@@ -2,18 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class DynamiteLogic : MonoBehaviour
 {
     public float fuseTime;
     public float explosionRadius;
     AudioSource explosionSound;
     SpriteRenderer spriteRenderer;
-    
+    SoundManager soundmanager;
 
     void Start()
     {
       explosionSound = GetComponent<AudioSource>();
       spriteRenderer = GetComponent<SpriteRenderer>();
+      explosionSound.clip = GameObject.Find("Sound Manager").GetComponent<SoundManager>().playerSounds[0];
     }
 
     void Update()

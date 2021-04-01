@@ -14,14 +14,38 @@ public class SoundManager : MonoBehaviour
     void Start()
     {
         audioPlayer = this.GetComponent<AudioSource>(); //get audioplayer component from this gameobject
-        audioPlayer.clip = music[0]; //select first music audio file from music list
-        audioPlayer.Play(0);  // start play
-        audioPlayer.loop = true; //make sure it's looping
+        playMusic(0);
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void playPlayerSound(int listItem)
+    {
+        audioPlayer.clip = playerSounds[listItem];
+        audioPlayer.Play(0);
+    }
+
+    public void playEnemySound(int listItem)
+    {
+        audioPlayer.clip = enemySounds[listItem];
+        audioPlayer.Play(0);
+    }
+
+    public void playMusic(int listItem)
+    {
+        audioPlayer.clip = music[listItem]; //select music from the list
+        audioPlayer.Play(0);  // start play
+        audioPlayer.loop = true; //make sure it's looping
+    }
+
+    public void playAmbience(int listItem)
+    {
+        audioPlayer.clip = ambience[listItem]; //select ambience from the list
+        audioPlayer.Play(0);  // start play
+        audioPlayer.loop = true; //make sure it's looping
     }
 }

@@ -43,14 +43,18 @@ public class PlayerMovement : MonoBehaviour
     horizontalmove = Input.GetAxisRaw("Horizontal") * speed;
     if (horizontalmove < 0)
     {
-      this.GetComponent<SpriteRenderer>().flipX = true;
+            this.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
     }
     if (horizontalmove > 0)
     {
-      this.GetComponent<SpriteRenderer>().flipX = false;
-    }
+            this.gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
 
-    if (Input.GetKey("space")) is_jumping = true;
+    if (Input.GetKey("space"))
+    {
+       is_jumping = true;
+            
+    }
   }
 
   private void OnTriggerEnter2D(Collider2D collision)

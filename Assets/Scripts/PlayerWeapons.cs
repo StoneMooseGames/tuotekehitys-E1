@@ -15,10 +15,14 @@ public class PlayerWeapons : MonoBehaviour
 
     PlayerUI playerUI;
 
+    AudioSource weaponAudio;
+
     void Start()
     {
       playerUI = GameObject.FindGameObjectWithTag("PlayerUI").GetComponent<PlayerUI>();
       playerUI.SetDynamite(dynamites);
+        weaponAudio = this.GetComponent<AudioSource>();
+        weaponAudio.clip = GameObject.Find("Sound Manager").gameObject.GetComponent<SoundManager>().playerSounds[2];
     }
 
     void Update() { Controls(); }
@@ -39,6 +43,7 @@ public class PlayerWeapons : MonoBehaviour
         Vector2 direction = target - playerLocation;
         direction.Normalize();
         bullet.GetComponent<Rigidbody2D>().velocity =  direction * bulletSpeed;
+            weaponAudio.Play(0);
       }
 
       if ( Input.GetMouseButtonDown(1) ) // right click for now

@@ -16,11 +16,15 @@ public class PlayerMovement : MonoBehaviour
   private Vector3 velocity = Vector3.zero;
   private Rigidbody2D rb;
   private bool is_jumping;
+    private AudioSource playerAudio;
+    private AudioClip jetPackClip;
 
   void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         playerUI = GameObject.FindGameObjectWithTag("PlayerUI");
+        playerAudio = this.GetComponent<AudioSource>();
+        jetPackClip = GameObject.Find("Sound Manager").gameObject.GetComponent<SoundManager>().playerSounds[1];
     }
 
   void Update()
@@ -36,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
     if ( is_jumping ) {
       rb.AddForce(new Vector2(0f, jetpackForce));
       is_jumping = false;
+        
     }
   }
   private void Controls()
@@ -53,8 +58,8 @@ public class PlayerMovement : MonoBehaviour
     if (Input.GetKey("space"))
     {
        is_jumping = true;
-            
-    }
+      
+        }
   }
 
   private void OnTriggerEnter2D(Collider2D collision)

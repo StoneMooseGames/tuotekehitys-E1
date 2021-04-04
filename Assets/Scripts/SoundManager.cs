@@ -23,18 +23,6 @@ public class SoundManager : MonoBehaviour
         
     }
 
-    public void playPlayerSound(int listItem)
-    {
-        audioPlayer.clip = playerSounds[listItem];
-        audioPlayer.Play(0);
-    }
-
-    public void playEnemySound(int listItem)
-    {
-        audioPlayer.clip = enemySounds[listItem];
-        audioPlayer.Play(0);
-    }
-
     public void playMusic(int listItem)
     {
         audioPlayer.clip = music[listItem]; //select music from the list
@@ -42,10 +30,5 @@ public class SoundManager : MonoBehaviour
         audioPlayer.loop = true; //make sure it's looping
     }
 
-    public void playAmbience(int listItem)
-    {
-        audioPlayer.clip = ambience[listItem]; //select ambience from the list
-        audioPlayer.Play(0);  // start play
-        audioPlayer.loop = true; //make sure it's looping
-    }
+   
 }

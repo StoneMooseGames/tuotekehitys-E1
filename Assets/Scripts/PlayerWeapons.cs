@@ -68,7 +68,8 @@ public class PlayerWeapons : MonoBehaviour
     }
 
     float GetPlayerDirection() {
-      // -1 == left, 1 == right
-      return this.GetComponent<SpriteRenderer>().flipX ? -1 : 1;
+        // -1 == left, 1 == right
+        if (GameObject.Find("gun").transform.position.x > this.gameObject.transform.position.x) return 1;
+        else return -1;
     }
 }

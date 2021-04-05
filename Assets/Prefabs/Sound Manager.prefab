@@ -142,9 +142,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSounds:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 9bb32cbc02e91de449bc3e8baee9adcd, type: 3}
+  - {fileID: 8300000, guid: 8b6e569745f5b8248a5d8bb2e49900d9, type: 3}
+  - {fileID: 8300000, guid: 30cb2bd4e6a9c8645ade31ea228e247c, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   ambience:
@@ -154,7 +154,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   enemySounds:
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 9b1a9e7145652b14f966d2ba1c31c1fd, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

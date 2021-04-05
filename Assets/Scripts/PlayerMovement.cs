@@ -7,16 +7,29 @@ public class PlayerMovement : MonoBehaviour
 {
   public float speed = 2.0f;
   public float jetpackForce = 1.0f;
+  public int health = 200;
   public Animator animator;
+  private GameObject playerUI;
 
   private int levelNumber;
   private float horizontalmove = 0f;
   private Vector3 velocity = Vector3.zero;
   private Rigidbody2D rb;
   private bool is_jumping;
+  private AudioSource playerAudio;
+  private AudioClip jetPackClip;
+  
+  void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        playerUI = GameObject.FindGameObjectWithTag("PlayerUI");
+        playerAudio = this.GetComponent<AudioSource>();
+        jetPackClip = GameObject.Find("Sound Manager").gameObject.GetComponent<SoundManager>().playerSounds[1];
+        
+    }
 
-  void Start() { rb = GetComponent<Rigidbody2D>(); }
-  void Update() {
+  void Update()
+    {
         Controls();
         animator.SetFloat("Speed", Mathf.Abs(horizontalmove));
     }
@@ -28,22 +41,36 @@ public class PlayerMovement : MonoBehaviour
     if ( is_jumping ) {
       rb.AddForce(new Vector2(0f, jetpackForce));
       is_jumping = false;
-    }
+           
+        }
   }
-  private void Controls()
-  {
-    horizontalmove = Input.GetAxisRaw("Horizontal") * speed;
-    if (horizontalmove < 0)
+    private void Controls()
     {
-      this.GetComponent<SpriteRenderer>().flipX = true;
-    }
-    if (horizontalmove > 0)
-    {
-      this.GetComponent<SpriteRenderer>().flipX = false;
-    }
+        horizontalmove = Input.GetAxisRaw("Horizontal") * speed;
+        if (horizontalmove < 0)
+        {
+            this.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+        if (horizontalmove > 0)
+        {
+            this.gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
 
-    if (Input.GetKey("space")) is_jumping = true;
-  }
+        if (Input.GetKey("space"))
+        {
+            is_jumping = true;
+            GameObject.Find("jetFlame1").gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            GameObject.Find("jetFlame1").gameObject.GetComponent<AudioSource>().enabled = true;
+            if (!GameObject.Find("jetFlame1").gameObject.GetComponent<AudioSource>().isPlaying) GameObject.Find("jetFlame1").gameObject.GetComponent<AudioSource>().Play(0);
+        }
+        else
+        {
+            GameObject.Find("jetFlame1").gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            GameObject.Find("jetFlame1").gameObject.GetComponent<AudioSource>().enabled = false;
+        }
+
+
+        }
 
   private void OnTriggerEnter2D(Collider2D collision)
   {
@@ -70,5 +97,22 @@ public class PlayerMovement : MonoBehaviour
       }
       Debug.Log("Current level:" + SceneManager.GetActiveScene().name); //print levelnumber to the console
     }
+
+    if(collision.gameObject.tag == "tempendlevel")
+        {
+            SceneManager.LoadScene("Menu");
+        }
   }
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        Debug.Log(health);
+        playerUI.GetComponent<PlayerUI>().SetHealthFill(health);
+        if (health <= 0) startPlayerDeathSequence();
+    }
+    private void startPlayerDeathSequence()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
 }

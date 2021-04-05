@@ -19,6 +19,9 @@ public class Spider : MonoBehaviour
     public Vector2 triggerDistance = new Vector2(5, 2);
     public Animator animator;
     bool isAlive = true;
+    int damage = 20;
+    GameObject soundmanager;
+    AudioSource audioPlayer;
 
 
     void Start()
@@ -31,6 +34,8 @@ public class Spider : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>(); //find player
         healthBarLocation = healthBar.GetComponent<RectTransform>(); //store healtbarlocation info
         Maxhealth = health;
+        soundmanager = GameObject.Find("Sound Manager");
+        audioPlayer = this.GetComponent<AudioSource>();
         
     }
     
@@ -93,6 +98,19 @@ public class Spider : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
             GetComponent<Rigidbody2D>().simulated = true;
             animator.SetBool("isAwake", true);
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<PlayerMovement>().TakeDamage(damage);
+        }
+        if(collision.gameObject.name == "Bullet(Clone)")
+        {
+            audioPlayer.clip = soundmanager.GetComponent<SoundManager>().enemySounds[0];
+            audioPlayer.Play(0);
         }
     }
 

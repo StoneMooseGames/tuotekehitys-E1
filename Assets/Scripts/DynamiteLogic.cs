@@ -31,10 +31,17 @@ public class DynamiteLogic : MonoBehaviour
         Collider2D[] hitColliders = Physics2D.OverlapCircleAll( this.gameObject.transform.position, explosionRadius );
         foreach ( var hitCollider in hitColliders )
         {
-          if ( hitCollider.tag == "Destroyable" ) Destroy( hitCollider.gameObject );
-          // TODO: player damage
-          else if ( hitCollider.name == "Player" ) print( "TODO: oof you took X damage!" );
-        }
+                if (hitCollider.tag == "Destroyable") Destroy(hitCollider.gameObject);
+
+                else if (hitCollider.name == "Player")
+                {
+                    GameObject.Find("Player").gameObject.GetComponent<PlayerMovement>().TakeDamage(50);
+                }
+                else if (hitCollider.name == "Spider")
+                {
+                    GameObject.Find("Spider").gameObject.GetComponent<Spider>().health -= 50;
+                }
+            }
 
         explosionSound.Play(); // play audio
         // because Destroy is delayed so that the audio is played correctly,

@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
   public float speed = 2.0f;
   public float jetpackForce = 1.0f;
-    public int health = 200;
+  public int health = 200;
   public Animator animator;
   private GameObject playerUI;
 
@@ -16,15 +16,16 @@ public class PlayerMovement : MonoBehaviour
   private Vector3 velocity = Vector3.zero;
   private Rigidbody2D rb;
   private bool is_jumping;
-    private AudioSource playerAudio;
-    private AudioClip jetPackClip;
-
+  private AudioSource playerAudio;
+  private AudioClip jetPackClip;
+  
   void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         playerUI = GameObject.FindGameObjectWithTag("PlayerUI");
         playerAudio = this.GetComponent<AudioSource>();
         jetPackClip = GameObject.Find("Sound Manager").gameObject.GetComponent<SoundManager>().playerSounds[1];
+        
     }
 
   void Update()
@@ -40,27 +41,36 @@ public class PlayerMovement : MonoBehaviour
     if ( is_jumping ) {
       rb.AddForce(new Vector2(0f, jetpackForce));
       is_jumping = false;
-        
-    }
+           
+        }
   }
-  private void Controls()
-  {
-    horizontalmove = Input.GetAxisRaw("Horizontal") * speed;
-    if (horizontalmove < 0)
+    private void Controls()
     {
+        horizontalmove = Input.GetAxisRaw("Horizontal") * speed;
+        if (horizontalmove < 0)
+        {
             this.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
-    }
-    if (horizontalmove > 0)
-    {
+        }
+        if (horizontalmove > 0)
+        {
             this.gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
         }
 
-    if (Input.GetKey("space"))
-    {
-       is_jumping = true;
-      
+        if (Input.GetKey("space"))
+        {
+            is_jumping = true;
+            GameObject.Find("jetFlame1").gameObject.GetComponent<SpriteRenderer>().enabled = true;
+            GameObject.Find("jetFlame1").gameObject.GetComponent<AudioSource>().enabled = true;
+            if (!GameObject.Find("jetFlame1").gameObject.GetComponent<AudioSource>().isPlaying) GameObject.Find("jetFlame1").gameObject.GetComponent<AudioSource>().Play(0);
         }
-  }
+        else
+        {
+            GameObject.Find("jetFlame1").gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            GameObject.Find("jetFlame1").gameObject.GetComponent<AudioSource>().enabled = false;
+        }
+
+
+        }
 
   private void OnTriggerEnter2D(Collider2D collision)
   {
